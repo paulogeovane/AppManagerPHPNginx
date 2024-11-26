@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal Web</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .output-container {
+        height: 40vh;
+        overflow-y: auto;
+        background-color: #000;
+        color: #0f0;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1 class="text-center">Terminal Web</h1>
+
+      <form method="POST" class="mt-4">
+        <div class="form-group">
+          <label for="command">Comando:</label>
+          <input
+            type="text"
+            name="command"
+            id="command"
+            class="form-control"
+            placeholder="Digite o comando"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Executar</button>
+      </form>
+
+      {% if command_output %}
+      <div class="card mt-4">
+        <div class="card-header">
+          <h5>Saída do Comando</h5>
+        </div>
+        <div class="card-body">
+          <div class="output-container">{{ command_output }}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="mt-4 text-center">
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

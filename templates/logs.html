@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logs do Nginx</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .log-container {
+        height: 70vh; /* Ajuste a altura conforme necessário */
+        overflow-y: auto;
+        background-color: #f8f9fa; /* Cor de fundo clara */
+        border: 1px solid #dee2e6; /* Borda para destacar */
+        padding: 1rem;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1 class="text-center">Logs do Nginx - {{ log_type|capitalize }}</h1>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <h5>Conteúdo do Log</h5>
+        </div>
+        <div class="card-body">
+          <!-- Div com barra de rolagem -->
+          <div class="log-container">
+            <pre style="white-space: pre-wrap; margin: 0">
+{% for line in logs %}{{ line }}{% endfor %}</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

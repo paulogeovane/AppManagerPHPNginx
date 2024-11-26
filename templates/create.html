@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Aplicação PHP</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Criar Nova Aplicação PHP</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="app_name">Nome da Aplicação</label>
+                <input type="text" class="form-control" id="app_name" name="app_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="php_version">Versão do PHP</label>
+                <select id="php_version" name="php_version" class="form-control" required>
+                    {% for version in php_versions %}
+                    <option value="{{ version }}">{{ version }}</option>
+                    {% else %}
+                    <option value="">Nenhuma versão disponível</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="domain_or_ip">Escolha entre IP ou Domínio</label>
+                <input type="text" class="form-control" id="domain_or_ip" name="domain_or_ip" value="10.0.0.13" required>
+            </div>
+
+            <div class="form-group">
+                <label for="port">Porta</label>
+                <input type="text" class="form-control" id="port" name="port" placeholder="Exemplo: 8080" required>
+            </div>
+
+            <div class="form-group">
+                <label for="app_folder">Pasta da Aplicação</label>
+                <input type="text" class="form-control" id="app_folder" name="app_folder" placeholder="Exemplo: public para Laravel">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Criar Aplicação</button>
+        </form>
+
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar para Listagem</a>
+        </div>
+    </div>
+</body>
+</html>
